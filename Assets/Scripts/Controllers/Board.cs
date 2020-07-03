@@ -47,8 +47,7 @@ public class Board : MonoBehaviour
                 Tile instantiatedTile = Instantiate(_tilePrefab, _backgroundSprite.transform);
                 instantiatedTile.transform.localPosition = firstTilePosition + new Vector2((y % 2 == 0 ? (x * tileSize) : ((BOARD_SIZE - x - 1) * tileSize)), y * tileSize);
                 instantiatedTile.SetData(
-                    Color.Lerp(_firstColor, _secondColor,
-                    (float)instantiatedTile.transform.GetSiblingIndex() / 100f),
+                    pingPong ? _firstColor : _secondColor,
                     tileSize,
                     instantiatedTile.transform.GetSiblingIndex() + 1);
             }
